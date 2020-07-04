@@ -23,4 +23,14 @@ feature 'register user' do
 
     expect(page).to_not have_link('Sign in')
   end
+
+  scenario 'sign out' do
+    user = User.create(email: 'renan@renan.com', encrypted_password: '1234567890')
+
+    login_as user
+    visit root_path
+    click_on 'Sign out'
+
+    expect(page).to have_link('Sign in')
+  end
 end
