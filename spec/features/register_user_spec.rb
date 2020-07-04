@@ -25,7 +25,7 @@ feature 'register user' do
   end
 
   scenario 'sign out' do
-    user = User.create(email: 'renan@renan.com', encrypted_password: '1234567890')
+    user = create(:user)
 
     login_as user
     visit root_path
