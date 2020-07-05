@@ -25,3 +25,9 @@
 
 # Ignore file to ensure that coverage results are not tracked by Git
 coverage/*
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
