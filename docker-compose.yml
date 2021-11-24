@@ -1,0 +1,17 @@
+version: '3.9'
+services:
+  app:
+    build:
+      context: .
+      target: dev
+    working_dir: /app
+    volumes:
+      - ./:/app
+      - bundlerCached:/usr/local/bundle
+      - yarnCached:/usr/local/share/.cache/yarn/v6
+      - nodeModulesCached:/app/node_modules
+
+volumes:
+  bundlerCached:
+  yarnCached:
+  nodeModulesCached:
