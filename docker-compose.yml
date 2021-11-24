@@ -8,13 +8,31 @@ services:
     ports:
       - 3005:3000
     command: bundle exec rails server -b 0.0.0.0
+    networks:
+      - gpetsnet
     volumes:
       - ./:/app
       - bundlerCached:/usr/local/bundle
       - yarnCached:/usr/local/share/.cache/yarn/v6
       - nodeModulesCached:/app/node_modules
+  db:
+    image: postgres
+    ports:
+      - 5439:5439
+    environment:
+      - POSTGRES_PASSWORD=gpets
+      - POSTGRES_USER=gpets
+      - POSTGRES_DB=gpets
+    networks:
+      - gpetsnet
+    volumes:
+      - dbgpets:/var/lib/postgresql/data
 
 volumes:
   bundlerCached:
   yarnCached:
   nodeModulesCached:
+  dbgpets:
+
+networks:
+  gpetsnet:
